@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Design_Patterns.Behavioral.Command
+namespace Design_Patterns.Structural.Composite
 {
-    internal class Light
+    public interface IItem
     {
+        double GetPrice();
     }
 }
