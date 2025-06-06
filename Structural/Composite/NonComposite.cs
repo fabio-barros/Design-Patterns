@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Patterns.Structural.Composite
+﻿namespace Design_Patterns.Structural.Composite
 {
-    public class KeyboardItem(double price)
+    public class KeyboardItem
     {
-        public double Price { get; set; } = price;
+        public double Price { get; }
+
+        public KeyboardItem(double price)
+        {
+            Price = price;
+        }
     }
 
     public class VgaItem(double price)
     {
-        public double Price { get; set; } = price;
+        public double Price { get; } = price;
     }
 
     public class CpuItem(double price)
     {
-        public double Price { get; set; } = price;
+        public double Price { get; } = price;
     }
 
+
+    
     public class BoxItem
     {
         private List<object> items = [];
@@ -53,6 +54,7 @@ namespace Design_Patterns.Structural.Composite
                 {
                     totalPrice += ((BoxItem)item).GetTotalPrince();
                 }
+
             }
 
             return totalPrice;

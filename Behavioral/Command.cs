@@ -7,12 +7,38 @@ using System.Threading.Tasks;
 namespace Design_Patterns.Behavioral
 {
 
-
+    //Command Interface
     public interface ICommand
     {
         void Executar();
     }
 
+    // Command Classes
+    public class LigarLampadaCommand(Lampada lampada) : ICommand
+    {
+        public void Executar()
+        {
+            lampada.Ligar();
+        }
+    }
+
+    public class DesligarLampadaCommand(Lampada lampada) : ICommand
+    {
+        public void Executar()
+        {
+            lampada.Desligar();
+        }
+    }
+
+    public class LampadaDimCommand(Lampada lampada) : ICommand
+    {
+        public void Executar()
+        {
+            lampada.DiminuirBrilho();
+        }
+    }
+
+    //Receiver
     public class Lampada
     {
         public void Ligar()
@@ -30,6 +56,7 @@ namespace Design_Patterns.Behavioral
         }
     }
 
+    //Invoker
     public class ControleRemoto(ICommand command)
     {
         public void Botao()
@@ -43,28 +70,6 @@ namespace Design_Patterns.Behavioral
         }
     }
 
-    public class LigarLampadaCommand(Lampada lampada) : ICommand
-    {
-        public void Executar()
-        {
-            lampada.Ligar();
-        }
-    }
-
-    public class DesligarLampadaCommand(Lampada lampada) : ICommand
-    {
-        public void Executar()
-        {
-            lampada.Desligar();
-        }
-    }
-    public class LampadaDimCommand(Lampada lampada) : ICommand
-    {
-        public void Executar()
-        {
-            lampada.DiminuirBrilho();
-        }
-    }
 
     public class CommandClient
     {
