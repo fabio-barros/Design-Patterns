@@ -58,4 +58,33 @@ namespace Design_Patterns.Structural.Composite
             return totalPrice;
         }
     }
+
+    public class NonCompositeClient
+    {
+        public static void NonCompositeExample()
+        {
+            var package = new BoxItem();
+
+            var box1 = new BoxItem();
+            box1.Add(new KeyboardItem(100));
+
+            var box2 = new BoxItem();
+            var box3 = new BoxItem();
+            box3.Add(new VgaItem(200));
+
+            var box4 = new BoxItem();
+            box4.Add(new CpuItem(300));
+
+            box2.Add(box3);
+            box2.Add(box4);
+
+            package.Add(box1);
+            package.Add(box2);
+
+            Console.WriteLine("Método sem Composite: " + package.GetTotalPrince());
+            Console.ReadKey();
+        }
+    }
+
+
 }

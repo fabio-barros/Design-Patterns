@@ -1,57 +1,63 @@
-﻿using Design_Patterns.Structural.Composite;
+﻿using Design_Patterns.Behavioral;
+using Design_Patterns.Structural.Composite;
 
 namespace Design_Patterns;
 
 internal class Program
 {
+
     private static void Main(string[] args)
     {
-        var package = new BoxItem();
-
-        var box1 = new BoxItem();
-        box1.Add(new KeyboardItem(100));
-
-        var box2 = new BoxItem();
-
-        var box3 = new BoxItem();
-        box3.Add(new VgaItem(200));
-
-        var box4 = new BoxItem();
-        box4.Add(new CpuItem(300));
-
-        box2.Add(box3);
-        box2.Add(box4);
-
-        package.Add(box1);
-        package.Add(box2);
-
-        Console.WriteLine(package.GetTotalPrince());
-
-        MainComposite(args);
-
+        RunMenu();
     }
 
-    private static void MainComposite(string[] args)
+    private static void RunMenu()
     {
-        var package = new BoxItem();
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("===== Menu =====");
+            Console.WriteLine("1. Exemplo sem Composite");
+            Console.WriteLine("2. Exemplo com Composite");
+            Console.WriteLine("3. Exemplo sem Command");
+            Console.WriteLine("4. Exemplo com Command");
+            Console.WriteLine("0. Sair");
+            Console.Write("Escolha uma opção: ");
 
-        var box1 = new BoxItem();
-        box1.Add(new KeyboardItem(100));
+            var choice = Console.ReadLine();
 
-        var box2 = new BoxItem();
+            switch (choice)
+            {
+                case "1":
+                    NonCompositeClient.NonCompositeExample();
+                    break;
+                case "2":
+                    CompositeClient.CompositeExample();
+                    break;
+                case "3":
+                    NonCommandClient.NonCommandExample();
+                    break;
+                case "4":
+                    CommandClient.CommandExample();
+                    break;
+                case "0":
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida! Pressione qualquer tecla para tentar novamente...");
+                    Console.ReadKey();
+                    break;
+            }
+        }
 
-        var box3 = new BoxItem();
-        box3.Add(new VgaItem(200));
 
-        var box4 = new BoxItem();
-        box4.Add(new CpuItem(300));
-
-        box2.Add(box3);
-        box2.Add(box4);
-
-        package.Add(box1);
-        package.Add(box2);
-
-        Console.WriteLine(package.GetTotalPrince());
     }
+
+
+
+
+ 
+
+
+
+  
 }
